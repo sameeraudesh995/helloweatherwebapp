@@ -3,7 +3,7 @@
 \*-----------------------------------*/
 
 /**
- * copyright 2023 codewithsadee
+ * 
  */
 
 /*-----------------------------------*\
@@ -548,6 +548,7 @@ article.container::before{
 .highlight-card :is(.wrapper, .card-list, .card-item){
   display: flex;
   align-items: center;
+  
 }
 
 .highlight-card .wrapper{
@@ -835,7 +836,7 @@ article.container::before{
 }
 
 
-/*responsive for large than 768px screen*/
+/*responsive for large than 1200px screen*/
 
 @media(min-width: 768px){
 
@@ -931,4 +932,54 @@ article.container::before{
     }
 
     .search-view .view-list:empty{min-height: 120px;}
+
+    .search-view 
+    .view-list::-webkit-scrollbar-button{height: 20px;}
+
+    .search-view:is(:hover, :has(.view-list):hover){
+      filter: drop-shadow(var(--shadow-1));
+    }
+
+    .search-view:is(:focus-within, :has(.view-list):focus-within){
+      filter: drop-shadow(var(--shadow-2));
+    }
+
+
+    /* MAIN */
+
+    main{
+      height: calc(100vh - 120px);
+      height: calc(100svh - 120px);
+    }
+
+
+    article.container{
+      grid-template-columns: 360px minmax(0, 1fr);
+      gap: 40px;
+    }
+
+    .current-weather .weather-icon{width: 80px;}
+
+    .forecast-card .title-2{--title-2: 2.2rem;}
+
+    .highlight-card:nth-child(-n+2){height: 200px;}
+
+    .highlight-card:nth-child(n+3){
+      height: 150px;
+    }
+
+    .highlight-card .m-icon{font-size: 4.8rem;}
+
+    .slider-list{gap: 16px;}
+
+}
+
+
+/*responsive for large than 1400px screen*/
+
+@media (min-width: 1400px){
+
+  .highlight-list{grid-template-columns: repeat(4, 1fr);}
+
+
 }
