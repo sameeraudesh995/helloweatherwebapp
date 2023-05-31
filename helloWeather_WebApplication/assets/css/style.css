@@ -233,7 +233,7 @@ body{
 
 @keyframes ripple{
   0% {clip-path: circle(0% at 50% 50%);}
-  100%{clip-path: circle(100% at 50% 50%);}
+  100% {clip-path: circle(100% at 50% 50%);}
 }
 
 .btn-primary{
@@ -252,12 +252,14 @@ body{
 .btn-primary .span {font-weight: var(--weight-semiBold);}
 
 .btn-primary[disabled]{
-  background-color: var(--outline);
-  color: var(--on-surface-variant);
-  cursor: not-allowed;
+  /*  */
+  background-color: var(--primary);
+  color: var(--on-primary);
+  cursor: hand;
 }
 
 .btn-primary[disabled]::before{display: none;}
+/*  */
 
 .card{
   background-color: var(--surface);
@@ -326,7 +328,7 @@ body{
 
 .header .btn-primary{padding-inline: 12px;}
 
-.search-view .active{
+.search-view {
   position: fixed;
   top: 0;
   left: 0;
@@ -342,7 +344,7 @@ body{
   transition: clip-path 500ms ease;
 }
 
-.search-view{
+.search-view.active{
   opacity: 1;
   visibility: visible;
   clip-path: circle(130% at 73% 5%);
@@ -393,6 +395,14 @@ body{
   left: 28px;
   transform: translate(-50%, 50%);
 }
+/* My CSS */
+.mysearch-icon {
+  position: absolute;
+  top: 5px;
+  left: 28px;
+  transform: translate(-50%, 50%);
+}
+
 
 .search-wrapper > .m-icon{display: none;}
 
@@ -448,6 +458,8 @@ article.container::-webkit-scrollbar-thumb{background-color: transparent;}
 article.container:is(:hover, :focus-within)::-webkit-scrollbar-thumb {
   background-color: var(--white-alpha-8);
 }
+
+article.container::-webkit-scrollbar-button{height: 10px;}
 
 article.container::before{
   content: "";
@@ -630,7 +642,7 @@ article.container::before{
   gap: 12px;
 }
 
-.slider-list:first-child{margin-block-end: 16px;}
+.slider-list:first-child{margin-block-end: 16px;} 
 
 .slider-list::before,
 .slider-list::after{
@@ -838,7 +850,7 @@ article.container::before{
 
 /*responsive for large than 1200px screen*/
 
-@media(min-width: 768px){
+@media(min-width: 1200px){
 
     /* Custom property */
 
