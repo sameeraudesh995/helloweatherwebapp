@@ -786,7 +786,7 @@ article.container::before{
 
   .header .btn-primary .span{display: block;}
 
-  .search-view{clip-path: circle(3% at calc(100% - 273px) 6%); }
+ .search-view{clip-path: circle(3% at calc(100% - 273px) 6%); }
 
 /* 
   MAIN */
