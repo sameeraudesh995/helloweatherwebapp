@@ -14,11 +14,14 @@
       name="description"
       content="weatherio is a weather app made by codewithsadee"
     />
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- 
         -favicon
      -->
-    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml"/>
+     <link rel="icon" href="/favicon.ico" sizes="any">
+     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+     <link rel="manifest" href="/manifest.webmanifest">
 
     <!-- google font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,6 +32,8 @@
 
     <!-- custome css link -->
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- boostrap links -->
+  
 
     <!-- custom js link -->
     <script src="./assets/js/app.js" type="module"></script>
@@ -38,74 +43,42 @@
     <!-- #HEDER -->
 
     <header class="header">
-      <div class="container">
-        <a href="#" class="logo">
-          <img
-            src="./assets/images/logo.png"
-            width="500"
-            height="80"
-            alt="logo"
-          />
-        </a>
-        <img src="./assets/images/dark2.png" width="55" height="55" alt="darkmood">
-        <div class="search-view" data-search-viwe>  
-          <!-- active -->
-          <div class="search-wrapper">
-            <input
-              type="search"
-              name="search"
-              placeholder="Search city..."
-              autocomplete="off"
-              class="search-field"
-              data-search-field
-            />
-              
-            <span class="m-icon mysearch-icon ">search</span>
-            
-            <button
-              class="icon-btn leading-icon has-state"
-              aria-label="close search"
-              data-search-toggler>
-            
-                <span class="m-icon" >arrow_back</span>
-            </button>
-          </div>
-
-          <div class="search-result" data-search-result>
-            <ul class="view-list" data-search-list>
-              <li class="view-item">
-                <span class="m-icon">location_on</span>
-
-                <div>
-                  <p class="item-title">London</p>
-                  <p class="label-2 item-subtitle">State of London, GB</p>
+    <nav>
+        <div class="nav-bar">
+            <i class='bx bx-menu sidebarOpen' ></i>
+            <img src="./assets/images/green.png" alt="#" style="height: 100px; width: 100px;">
+            <span class="logo navLogo"><a href="#">HELLOW WEATHER</a></span>
+            <div class="menu">
+                <div class="logo-toggle">
+                    <span class="logo"><a href="#">HELLOW WEATHER</a></span>
+                    <i class='bx bx-x siderbarClose'></i>
                 </div>
-                <a href="#" class="item-link has-state" data-search-toggler>
-
-                </a>
-              </li>
-            </ul>
-          </div>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="darkLight-searchBox">
+                <div class="dark-light">
+                    <i class='bx bx-moon moon'></i>
+                    <i class='bx bx-sun sun'></i>
+                </div>
+                <div class="searchBox">
+                   <div class="searchToggle">
+                    <i class='bx bx-x cancel'></i>
+                    <i class='bx bx-search search'></i>
+                   </div>
+                    <div class="search-field">
+                        <input type="text" placeholder="Search...">
+                        <i class='bx bx-search'></i>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="header-action">
-          <button
-            class="icon-btn has-state"
-            aria-label="open search"
-            data-search-toggler
-          >
-            <span class="m-icon icon">search</span>
-          </button>
-          <a
-            href="#/current-location"
-            class="btn-primary has-state"
-            data-current-location-btn disabled
-          >
-            <span class="m-icon">my_location</span>
-            <span class="span">Current Location</span>
-          </a>
-        </div>
-      </div>
+    </nav>
     </header>
 
 
@@ -636,22 +609,115 @@
                 </div>
 
                 </section>
+                <div>
+                  <section class="section forecast" aria-labelledby="forecast-label" data-5-day-forecast>
 
+                    <h2 class="title-2" id="forecast-label">Previous Days Weather
+                    </h2>
+                    <div class="card card-lg forecast-card">
+
+                      <ul>
+                        <li class="card-item">
+                          <div class="icon-wrapper">
+                            <img src="./assets/images/weather_icons/01n.png" width="36" height="36" alt=""
+                            alt="Overcast-Clouds" class="weather-icon">
+
+                            <span class="span">
+                              <p class="title-2">25</p>
+                            </span>
+
+                          </div>
+
+                          <p class="label-1">17 Feb</p>
+
+                          <p class="label-1">Friday</p>
+
+                        </li>
+
+                        <li class="card-item">
+                          <div class="icon-wrapper">
+                            <img src="./assets/images/weather_icons/01n.png" width="36" height="36" alt=""
+                            alt="Overcast-Clouds" class="weather-icon">
+
+                            <span class="span">
+                              <p class="title-2">25</p>
+                            </span>
+
+                          </div>
+
+                          <p class="label-1">17 Feb</p>
+
+                          <p class="label-1">Friday</p>
+
+                        </li>
+
+                        <li class="card-item">
+                          <div class="icon-wrapper">
+                            <img src="./assets/images/weather_icons/01n.png" width="36" height="36" alt=""
+                            alt="Overcast-Clouds" class="weather-icon">
+
+                            <span class="span">
+                              <p class="title-2">25</p>
+                            </span>
+
+                          </div>
+
+                          <p class="label-1">17 Feb</p>
+
+                          <p class="label-1">Friday</p>
+
+                        </li>
+
+                        <li class="card-item">
+                          <div class="icon-wrapper">
+                            <img src="./assets/images/weather_icons/01n.png" width="36" height="36" alt=""
+                            alt="Overcast-Clouds" class="weather-icon">
+
+                            <span class="span">
+                              <p class="title-2">25</p>
+                            </span>
+
+                          </div>
+
+                          <p class="label-1">17 Feb</p>
+
+                          <p class="label-1">Friday</p>
+
+                        </li>
+
+                        <li class="card-item">
+                          <div class="icon-wrapper">
+                            <img src="./assets/images/weather_icons/01n.png" width="36" height="36" alt=""
+                            alt="Overcast-Clouds" class="weather-icon">
+
+                            <span class="span">
+                              <p class="title-2">25</p>
+                            </span>
+
+                          </div>
+
+                          <p class="label-1">17 Feb</p>
+
+                          <p class="label-1">Friday</p>
+
+                        </li>
+
+                        
+                      </ul>
+                    </div>
+
+                  </section> 
+                </div>
 
                  <!-- #FOOTER -->
 
             <footer class="footer">
               <p class="body-3">
-                Copyri 2023 sameeraudesh. All Rights Reserved
               </p>
+              Copyri 2023 sameeraudesh. All Rights Reserved  Powered By <span><img  class="m-icon" src="./assets/images/icons8-world-48.png" alt=""></span><span> HELLOW WEATHER</span>
 
               <p class="body-3">
-                Powered By <a href="https://www.weatherapi.com" title="Free OpenWeather Api"
-                 target="_blank" rel="noopener">
-                 <img src="./assets/images/openweather.png" width="150" height="30" 
-                 loading="lazy" alt="OpenWeather">
-
-                </a>
+              
               </p>
             </footer>
 
@@ -678,6 +744,45 @@
 
 
     </section>
-
+    <script>
+      const body = document.querySelector("body"),
+            nav = document.querySelector("nav"),
+            modeToggle = document.querySelector(".dark-light"),
+            searchToggle = document.querySelector(".searchToggle"),
+            sidebarOpen = document.querySelector(".sidebarOpen"),
+            siderbarClose = document.querySelector(".siderbarClose");
+            let getMode = localStorage.getItem("mode");
+                if(getMode && getMode === "dark-mode"){
+                  body.classList.add("dark");
+                }
+      // js code to toggle dark and light mode
+            modeToggle.addEventListener("click" , () =>{
+              modeToggle.classList.toggle("active");
+              body.classList.toggle("dark");
+              // js code to keep user selected mode even page refresh or file reopen
+              if(!body.classList.contains("dark")){
+                  localStorage.setItem("mode" , "light-mode");
+              }else{
+                  localStorage.setItem("mode" , "dark-mode");
+              }
+            });
+      // js code to toggle search box
+              searchToggle.addEventListener("click" , () =>{
+              searchToggle.classList.toggle("active");
+            });
+       
+            
+      //   js code to toggle sidebar
+      sidebarOpen.addEventListener("click" , () =>{
+          nav.classList.add("active");
+      });
+      body.addEventListener("click" , e =>{
+          let clickedElm = e.target;
+          if(!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")){
+              nav.classList.remove("active");
+          }
+      });
+      </script>
+      
   </body>
 </html>
