@@ -1,40 +1,22 @@
-'use strict';
+const epoch = Math.round(Date.now()/1000);
 
-const api_key = "997de838f7807adb42f8d2ed9d53369f";
+    fetch('https://api.weatherapi.com/v1/history.json?key='+WEATHER_API_KEY+'&q='+location+'&unixdt='+(epoch-604800)+'&unixend_dt='+(epoch-86400))
+      .then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+      })
 
-/**
- * 
- * @param {string} URL 
- * @param {Function} callback 
- */
-
-export const fetchData = function(URL, callback){
-    fetch(`${URL}&appid=${api_key}`)
-    .then(res => res.json())
-    .then(data=>callback(data));
-}
-
-export const url = {
-    currentWeather(lat, lon){
-        return `https://api.openweathermap.org/data/2.5/weather?${lat}&${lon}&units=metric`
-    },
-    forecast(lat, lan){
-        return `https://api.openweathermap.org/data/2.5/forecast?${lat}&${lon}&units=metric`
-    },
-    airPollution (lat, lan) {
-        return `http://api.openweathermap.org/data/2.5/air_pollution?${lat}&${lon}`
-    },
-    reverseGeo(lat, lon){
-        return `http://api.openweathermap.org/geo/1.0/reverse?${lat}&${lon}&limit=5`
-      
-    },
-
-    /**
-     * 
-     * @param {string} query 
-     * 
-     */
-    geo(query) {
-        return `http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5`
-    }
-}
+      .then(json => {
+        historyData=json;    
+        for(var i=0; i<7; i++){
+            $(".history-day"+(i+1)).text(json.forecast.forecastday[i].date);
+            $(".history-condition-text"+(i+1)).text(json.forecast.forecastday[i].day.condition.text);
+            $(".history-temp"+(i+1)).text(json.forecast.forecastday[i].day.avgtemp_c+" °C");
+            $(".history-humidity"+(i+1)).text(json.forecast.forecastday[i].day.avghumidity+" %");
+        }        
+      })
+      .catch(error =>{
+        
+        
+      })

@@ -326,7 +326,10 @@ body{
   display: flex;
   align-items: center;
 }
-
+.header{
+  justify-content: center;
+  align-self: center;
+}
 .header .container{justify-content: space-between;}
 
 .header-actions{gap: 16px;}
@@ -599,7 +602,7 @@ article.container::before{
 }
 
 .badge.aqi-1{
-  background-color: var(--bg-aqi-1);
+  background-color: var(--primary);
   color: var(--on-bg-aqi-1);
 }
 
@@ -844,7 +847,10 @@ article.container::before{
 
  .hourly-forecast .card-sm{padding: 16px;}
 
-
+.navLogo{
+  font-size: 15px;
+  font-weight: 700;
+}
 
 
 
@@ -897,7 +903,7 @@ article.container::before{
       padding-block: 0;
       height: 100%;
     }
-
+/* 
     .search-view,
     .search-view.active{
       all: unset;
@@ -945,7 +951,7 @@ article.container::before{
       border-radius: 0 0 var(--radius-28) var(--radius-28);
       border-block-start: 1px solid var(--outline);
       overflow-y: auto; /*for firefox*/
-      overflow-y: overlay;
+      /* overflow-y: overlay;
 
     }
 
@@ -960,7 +966,7 @@ article.container::before{
 
     .search-view:is(:focus-within, :has(.view-list):focus-within){
       filter: drop-shadow(var(--shadow-2));
-    }
+    } */ */
 
 
     /* MAIN */
@@ -1024,6 +1030,7 @@ article.container::before{
     --text-color: #FFF;
     --search-bar: #F2F2F2;
     --search-text: #010718;
+    --navy: #000080;
 }
 body{
     height: 100vh;
@@ -1044,7 +1051,9 @@ nav{
     width: 100%;
     background-color: var(--nav-color);
     z-index: 100;
+    
 }
+
 body.dark nav{
     border: 1px solid #393838;
 }
@@ -1069,7 +1078,7 @@ nav .nav-bar .sidebarOpen{
 }
 nav .nav-bar .logo a{
     font-size: 25px;
-    font-weight: 500;
+    font-weight: 1000;
     color: var(--text-color);
     text-decoration: none;
 }
@@ -1255,4 +1264,9 @@ body.dark .search-field i{
         display: block;
         margin-top: 20px;
     }
+}
+
+#navigation_icon{
+  color: white;
+  cursor: pointer;
 }

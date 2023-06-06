@@ -8,19 +8,18 @@
     <!--
          primary mrta tag 
     -->
-    <title>weatherio</title>
+    <title>hello weather</title>
     <meta name="title" content="weatherio" />
     <meta
       name="description"
-      content="weatherio is a weather app made by codewithsadee"
+      content="hello weather app is a weather app made by sameera udesh"
     />
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- 
         -favicon
      -->
-     <link rel="icon" href="/favicon.ico" sizes="any">
-     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
      <link rel="manifest" href="/manifest.webmanifest">
 
     <!-- google font link -->
@@ -36,49 +35,57 @@
   
 
     <!-- custom js link -->
-    <script src="./assets/js/app.js" type="module"></script>
-    <script src="./assets/js/route.js" type="module"></script>
+    
+  
+   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.4.1.js"></script>
   </head>
   <body>
     <!-- #HEDER -->
 
     <header class="header">
-    <nav>
+      
+    <nav >
         <div class="nav-bar">
             <i class='bx bx-menu sidebarOpen' ></i>
-            <img src="./assets/images/green.png" alt="#" style="height: 100px; width: 100px;">
-            <span class="logo navLogo"><a href="#">HELLOW WEATHER</a></span>
+            <img src="./assets/images/storm.png" alt="#" style="height: 60px; width: 60px;"> 
+            <span class="logo navLogo"><a href="#">HELLO WEATHER</a></span>
             <div class="menu">
                 <div class="logo-toggle">
-                    <span class="logo"><a href="#">HELLOW WEATHER</a></span>
+                    <span class="logo"><a href="#">HELLO WEATHER</a></span>
                     <i class='bx bx-x siderbarClose'></i>
                 </div>
                 <ul class="nav-links">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Portfolio</a></li>
                     <li><a href="#">Services</a></li>
                     <li><a href="#">Contact</a></li>
+                    
                 </ul>
+                
             </div>
+           
             <div class="darkLight-searchBox">
+             
                 <div class="dark-light">
                     <i class='bx bx-moon moon'></i>
                     <i class='bx bx-sun sun'></i>
                 </div>
-                <div class="searchBox">
-                   <div class="searchToggle">
-                    <i class='bx bx-x cancel'></i>
-                    <i class='bx bx-search search'></i>
+                <div class="searchBox" style="gap: 10px;">
+                  <div class="searchToggle">
+                   <i class='bx bx-x cancel'></i>
+                   <i class='bx bx-search search'></i>
+                  </div>
+                   <div class="search-field">
+                       <input type="text" placeholder="Search..." id="textField">
+                       <i class="bx bx-search" id="btn"></i>
+
                    </div>
-                    <div class="search-field">
-                        <input type="text" placeholder="Search...">
-                        <i class='bx bx-search'></i>
-                    </div>
-                </div>
+               </div>
             </div>
         </div>
     </nav>
+    
     </header>
 
 
@@ -94,24 +101,28 @@
                         <h2 class="title-2 card-title">Now</h2>
 
                         <div class="weapper">
-                            <p class="heading">25&deg;<sup>c</sup></p>
+                            <p class="heading" id="currentTemp">25</p>
+                            <sup class="heading">&deg;c</sup>
                             <img src="./assets/images/weather_icons/01d.png" width="64" height="64" alt="Overcast Clouds" 
-                            class="weather-icon">
+                            class="weather-icon" id="icon1">
 
                         </div>
 
-                        <p class="body-3">Overcast Clouds</p>
+                        <p class="body-3" id="currentText">Overcast Clouds</p>
 
                         <ul class="meta-list">
 
                             <li class="meta-item">
                                 <span class="m-icon">calendar_today</span>
-                                <p class="title-3 meta-text">Thursday 16, Feb</p>
+                                <p class="title-3 meta-text" id="currentdate" style=" margin: -0.5em;">Thursday 16, Feb</p>
+                                <span class="title-3 meta-text">h</span>
                             </li>
 
                             <li class="meta-item">
                                 <span class="m-icon">location_on</span>
-                                <p class="title-3 meta-text">London, GB</p>
+                                <p class="title-3 meta-text" id="lc" style=" margin: -0.5em;">London</p>
+                                <span class="title-3 meta-text" style="display: inline; ">,</span>
+                                <span class="title-3 meta-text" id="country">GB</span>
                             </li>
 
                         </ul>
@@ -136,14 +147,15 @@
                             alt="Overcast-Clouds" class="weather-icon">
 
                             <span class="span">
-                              <p class="title-2">25</p>
+                              <p class="title-2" id="day1">25<sup>&deg;c</sup></p>
                             </span>
 
                           </div>
 
-                          <p class="label-1">17 Feb</p>
+                          <p class="label-1" id="day1day">17 Feb</p>
 
-                          <p class="label-1">Friday</p>
+                          <p class="label-1">19 <span class="label-1" style="display: inline;">km/h</span></p>
+                         
 
                         </li>
 
@@ -153,14 +165,46 @@
                             alt="Overcast-Clouds" class="weather-icon">
 
                             <span class="span">
-                              <p class="title-2">25</p>
+                              <p class="title-2" id="day2">25<sup>&deg;c</sup></p>
                             </span>
 
                           </div>
 
-                          <p class="label-1">17 Feb</p>
+                          <p class="label-1"  id="day2day">17 Feb</p>
 
-                          <p class="label-1">Friday</p>
+                          <p class="label-1">19 <span class="label-1" style="display: inline;">km/h</span></p>
+                        </li>
+
+                        <li class="card-item">
+                          <div class="icon-wrapper">
+                            <img src="./assets/images/weather_icons/01n.png" width="36" height="36" alt=""
+                            alt="Overcast-Clouds" class="weather-icon">
+
+                            <span class="span">
+                              <p class="title-2" id="day3">25<sup>&deg;c</sup></p>
+                            </span>
+
+                          </div>
+
+                          <p class="label-1"  id="day3day">17 Feb</p>
+
+                          <p class="label-1">19 <span class="label-1" style="display: inline;">km/h</span></p>
+                        </li>
+
+                        <li class="card-item">
+                          <div class="icon-wrapper">
+                            <img src="./assets/images/weather_icons/01n.png" width="36" height="36" alt=""
+                            alt="Overcast-Clouds" class="weather-icon">
+
+                            <span class="span">
+                              <p class="title-2" id="day4">25<sup>&deg;c</sup></p>
+                            </span>
+
+                          </div>
+
+                          <p class="label-1"  id="day4day">17 Feb</p>
+
+                          <p class="label-1">19 <span class="label-1" style="display: inline;">km/h</span></p>
 
                         </li>
 
@@ -170,49 +214,14 @@
                             alt="Overcast-Clouds" class="weather-icon">
 
                             <span class="span">
-                              <p class="title-2">25</p>
+                              <p class="title-2" id="day5">25<sup>&deg;c</sup></p>
                             </span>
 
                           </div>
 
-                          <p class="label-1">17 Feb</p>
+                          <p class="label-1"  id="day5day">17 Feb</p>
 
-                          <p class="label-1">Friday</p>
-
-                        </li>
-
-                        <li class="card-item">
-                          <div class="icon-wrapper">
-                            <img src="./assets/images/weather_icons/01n.png" width="36" height="36" alt=""
-                            alt="Overcast-Clouds" class="weather-icon">
-
-                            <span class="span">
-                              <p class="title-2">25</p>
-                            </span>
-
-                          </div>
-
-                          <p class="label-1">17 Feb</p>
-
-                          <p class="label-1">Friday</p>
-
-                        </li>
-
-                        <li class="card-item">
-                          <div class="icon-wrapper">
-                            <img src="./assets/images/weather_icons/01n.png" width="36" height="36" alt=""
-                            alt="Overcast-Clouds" class="weather-icon">
-
-                            <span class="span">
-                              <p class="title-2">25</p>
-                            </span>
-
-                          </div>
-
-                          <p class="label-1">17 Feb</p>
-
-                          <p class="label-1">Friday</p>
-
+                          <p class="label-1">19 <span class="label-1" style="display: inline;">km/h</span></p>
                         </li>
 
                         
@@ -247,33 +256,34 @@
 
                         <li class="card-item">
 
-                          <p class="title-1">23.3 </p>
+                          <p class="title-1" id="air1">23.3</p>
 
-                            <p class="label-1">PM <sub>2.5</sub></p>
+                            <p class="title-1" style="font-size: 25px;">Co</p>
                          
                         </li>
 
                         <li class="card-item">
 
-                          <p class="title-1">23.3 </p>
+                          <p class="title-1" id="air2">23.3 </p>
 
-                            <p class="label-1">PM <sub>2.5</sub></p>
+                            <p class="title-1" style="font-size: 25px;">No<sub>2</sub></p>
                          
                         </li>
 
                         <li class="card-item">
 
-                          <p class="title-1">23.3 </p>
+                          <p class="title-1" id="air3">23.3 </p>
 
-                            <p class="label-1">PM <sub>2.5</sub></p>
+                            <p class="title-1" style="font-size: 25px;">O<sub>3</sub></p>
                          
                         </li>
-
+ 
                         <li class="card-item">
 
-                          <p class="title-1">23.3 </p>
+                          <p class="title-1" id="air4">23.3 </p>
 
-                            <p class="label-1">PM <sub>2.5</sub></p>
+                          <p class="title-1" style="font-size: 25px;">So<sub>2</sub></p>
+                         
                          
                         </li>
 
@@ -281,9 +291,11 @@
                       </ul>
                     </div>
 
-                      <span class="badge aqi-1 label-1" title="aqi message">
+                       <span class="badge aqi-1 label-1" title="aqi message" style="justify-content: center; align-items: center;">
 
-                        Good
+                    
+                          <i class="material-icons" id="navigation_icon" style="color: #2d3436;">my_location</i>
+                         
 
                       </span>
 
@@ -301,7 +313,8 @@
                           <div>
                             <p class="label-1">Sunrise</p>
 
-                            <p class="title-1">6.30 AM</p>
+                            <p class="title-1" id="sunrise1" >6.30 AM</p>
+                             
 
 
                           </div>
@@ -314,7 +327,7 @@
                           <div>
                             <p class="label-1">Sunset</p>
 
-                            <p class="title-1">5.54 PM</p>
+                            <p class="title-1" id="sunset2">5.54 PM</p>
 
 
                           </div>
@@ -332,7 +345,7 @@
 
                         <span class="m-icon">humidity_percentage</span>
 
-                        <p class="title-1">35<sub>%</sub></p>
+                        <p class="title-1" ><span id="humidity" style="display: inline;">35</span><sub>%</sub></p>
                       </div>
 
 
@@ -347,7 +360,7 @@
 
                         <span class="m-icon">airway</span>
 
-                        <p class="title-1">1052<sub>hPa</sub></p>
+                        <p class="title-1" ><span id="pressure" style="display: inline;">1052</span><sub>hPa</sub></p>
                       </div>
 
 
@@ -362,7 +375,7 @@
 
                         <span class="m-icon">visibility</span>
 
-                        <p class="title-1">10<sub>km</sub></p>
+                        <p class="title-1" ><span id="visibility" style="display: inline;">10</span><sub>km</sub></p>
                       </div>
 
 
@@ -377,7 +390,8 @@
 
                         <span class="m-icon">thermostat</span>
 
-                        <p class="title-1">25&deg;<sub>c</sub></p>
+                        <p class="title-1" ><span id="feel_like" style="display: inline;">25</span><sub>&deg;c</sub></p>
+                        
                       </div>
 
 
@@ -617,20 +631,20 @@
                     <div class="card card-lg forecast-card">
 
                       <ul>
-                        <li class="card-item">
+                        <li class="card-item" id="previousweather">
                           <div class="icon-wrapper">
                             <img src="./assets/images/weather_icons/01n.png" width="36" height="36" alt=""
                             alt="Overcast-Clouds" class="weather-icon">
 
                             <span class="span">
-                              <p class="title-2">25</p>
+                              <p class="title-2">25<sup>&deg;c</sup></p>
                             </span>
 
                           </div>
 
                           <p class="label-1">17 Feb</p>
 
-                          <p class="label-1">Friday</p>
+                          <p class="label-1">19 <span class="label-1" style="display: inline;">km/h</span></p>
 
                         </li>
 
@@ -640,15 +654,14 @@
                             alt="Overcast-Clouds" class="weather-icon">
 
                             <span class="span">
-                              <p class="title-2">25</p>
+                              <p class="title-2">25<sup>&deg;c</sup></p>
                             </span>
 
                           </div>
 
                           <p class="label-1">17 Feb</p>
 
-                          <p class="label-1">Friday</p>
-
+                          <p class="label-1">19 <span class="label-1" style="display: inline;">km/h</span></p>
                         </li>
 
                         <li class="card-item">
@@ -657,15 +670,14 @@
                             alt="Overcast-Clouds" class="weather-icon">
 
                             <span class="span">
-                              <p class="title-2">25</p>
+                              <p class="title-2">25<sup>&deg;c</sup></p>
                             </span>
 
                           </div>
 
                           <p class="label-1">17 Feb</p>
 
-                          <p class="label-1">Friday</p>
-
+                          <p class="label-1">19 <span class="label-1" style="display: inline;">km/h</span></p>
                         </li>
 
                         <li class="card-item">
@@ -674,15 +686,14 @@
                             alt="Overcast-Clouds" class="weather-icon">
 
                             <span class="span">
-                              <p class="title-2">25</p>
+                              <p class="title-2">25<sup>&deg;c</sup></p>
                             </span>
 
                           </div>
 
                           <p class="label-1">17 Feb</p>
 
-                          <p class="label-1">Friday</p>
-
+                          <p class="label-1">19 <span class="label-1" style="display: inline;">km/h</span></p>
                         </li>
 
                         <li class="card-item">
@@ -691,14 +702,14 @@
                             alt="Overcast-Clouds" class="weather-icon">
 
                             <span class="span">
-                              <p class="title-2">25</p>
+                              <p class="title-2">25<sup>&deg;c</sup></p>
                             </span>
 
                           </div>
 
                           <p class="label-1">17 Feb</p>
 
-                          <p class="label-1">Friday</p>
+                          <p class="label-1">19 <span class="label-1" style="display: inline;">km/h</span></p>
 
                         </li>
 
@@ -707,24 +718,16 @@
                     </div>
 
                   </section> 
-                </div>
-
-                 <!-- #FOOTER -->
-
-            <footer class="footer">
-              <p class="body-3">
-              </p>
-              Copyri 2023 sameeraudesh. All Rights Reserved  Powered By <span><img  class="m-icon" src="./assets/images/icons8-world-48.png" alt=""></span><span> HELLOW WEATHER</span>
-
-              <p class="body-3">
               
-              </p>
-            </footer>
-
-
+                
+            
+                </div>
+                
             </div>  
+           
+          
 
-           <div class="loading" data-loading></div>
+           <!-- <div class="loading" data-loading></div> -->
 
         </article>
     </main>
@@ -744,6 +747,12 @@
 
 
     </section>
+    <!-- <footer class="footer"> -->
+      <p class="footer body-3" style="color: #eae6f2; font-weight: 700;">
+        Copyright 2023. All Rights Reserved  Powered By HELLO WEATHER<span style="margin: -1em;"><img  class="m-icon" src="./assets/images/icons8-world-48.png" alt=""></span>
+      </p>
+     
+    <!-- </footer> -->
     <script>
       const body = document.querySelector("body"),
             nav = document.querySelector("nav"),
@@ -783,6 +792,8 @@
           }
       });
       </script>
+      <script src="./assets/js/app.js" type="module"></script>
+      <script src="./assets/js/route.js" type="module"></script>
       
   </body>
 </html>
