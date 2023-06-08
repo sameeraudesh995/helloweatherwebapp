@@ -1,3 +1,5 @@
+//update weather history
+
 var historydata = document.getElementById("btn");
 
 historydata.addEventListener("click", function() {
@@ -17,7 +19,7 @@ function GetHistoryInfo(historyName) {
             
                 $("#historyDate"+(i+1)).text(data.forecast.forecastday[i].date);
                 $("#historyWind"+(i+1)).text((data.forecast.forecastday[i].day.maxwind_kph).toFixed(0)+"km/h");
-                $("#historyImg" + (i + 1)).attr("src", "http:" + data.forecast.forecastday[i].day.condition.icon);
+                $("#historyImg" + (i + 1)).attr("src", "https:" + data.forecast.forecastday[i].day.condition.icon);
 
                 
             }
@@ -29,3 +31,7 @@ function GetHistoryInfo(historyName) {
 }
 
 
+
+  
+  
+  
