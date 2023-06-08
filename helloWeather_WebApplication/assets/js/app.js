@@ -30,10 +30,10 @@ const day5 =$("#day5");
 
 
 
+
 btn.click(function(){
 
     var searchLocation =textFeild.val();
-
     $.ajax({
         url: `http://api.weatherapi.com/v1/forecast.json?q=${searchLocation}&key=ff14f746f028478188583111231405&aqi=yes`,
         method : "GET",
@@ -58,10 +58,15 @@ btn.click(function(){
             humidity.text(resp.current.humidity);
             pressure.text(resp.current.pressure_mb);
             visibility.text(resp.current.vis_km);
-            feelLike.text(resp.current.feelslike_c);
-           
-            day1.text(resp.forecast.forecastday[1].day.avgtemp_c);
+            feelLike.text(Math.round((resp.current.feelslike_c)));
 
+            document.getElementById("imgmain").src = "http:"+resp.current.condition.icon;
+        
+            for (let i = 0; i < 24; i+=3) {
+                document.getElementById("hourlyTemp" + i).innerHTML = Number(resp.forecast.forecastday[0].hour[i].temp_c).toFixed(0)+ "°c";
+                document.getElementById("hourlyimg" + i).src = "http:"+resp.forecast.forecastday[0].hour[i].condition.icon;
+                document.getElementById("hourlywind" + i).innerHTML = Number(resp.forecast.forecastday[0].hour[i].wind_kph).toFixed(0)+ "km/h";
+            }
 
         },
         error : function (error){
@@ -69,7 +74,94 @@ btn.click(function(){
         }
    
     });
-
-    
+  
 });
 
+
+
+    var myIcon = document.getElementById("btn");
+
+    myIcon.addEventListener("click", function() {
+    var newName = document.getElementById("textField");
+        GetInfo(newName);
+    });
+function GetInfo( newName){
+    fetch('https://api.openweathermap.org/data/2.5/forecast?q='+newName.value+'&appid=997de838f7807adb42f8d2ed9d53369f',)
+.then(response => response.json())
+.then(data => {
+    
+    //Getting Temp
+    for(var i = 0; i<5; i++){
+        document.getElementById("day" + (i+1)).innerHTML = Number(data.list[i+1].main.temp - 273.15).toFixed(1)+ "°c";
+        
+         document.getElementById("currentwind" + (i+1)).innerHTML = Number(data.list[i+1].wind.speed*3.6).toFixed(0);
+        
+    }
+
+    
+    // //Getting Weather Icons
+     for(i = 0; i<5; i++){
+        document.getElementById("img" + (i+1)).src = "http://openweathermap.org/img/wn/"+data.list[i+1].weather[0].icon+".png";
+    }
+    //------------------------------------------------------------
+    console.log(data)
+
+
+})
+
+.catch(err => alert("Something Went Wrong: Try Checking Your Internet Coneciton"))
+
+
+}
+GetInfo();
+
+function DefaultScreen(){
+    document.getElementById("cityInput").defaultValue = "London";
+    GetInfo();
+}
+
+
+
+
+
+//Getting and displaying the text for the upcoming five days of the week
+var d = new Date();
+var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",];
+
+//Function to get the correct integer for the index of the days array
+function CheckDay(day){
+    if(day + d.getDay() > 6){
+        return day + d.getDay() - 7;
+    }
+    else{
+        return day + d.getDay();
+    }
+}
+
+    for( var i = 0; i<5; i++){
+        document.getElementById("day" + (i+1) +"day").innerHTML = weekday[CheckDay(i+1)];
+    }
+
+    function setLocationWeatherData(){
+        if(!window.navigator.onLine){
+            Swal.fire({
+                icon: 'error',
+                title: "No Internet",                           
+                customClass: {
+                    popup: 'popup',
+                    title: 'popup-title',
+                    icon: 'popup-icon',
+                    image: 'popup-icon',
+                }  
+            })
+            return;
+        }
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position)=>{
+                GetInfo(position.coords.latitude+','+position.coords.longitude);
+                GetInfodata(position.coords.latitude+','+position.coords.longitude);
+            });
+        }else{
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
