@@ -688,8 +688,8 @@ article.container::before{
   color: var(--on-background);
   text-align: center;
   gap: 12px 24px;
-  margin-block-start: 28px;
-   display: flex; 
+  margin-block-start: 15px;
+  display: flex; 
 }
 
 .fade-in .footer{display: flex;}

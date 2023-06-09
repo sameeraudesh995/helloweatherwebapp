@@ -765,66 +765,15 @@
         </article>
     </main>
 
-
-    <!-- #044 SECTION -->
-
-    <section class="error-content" data-error-content>
-
-      <h2 class="heading">404</h2>
-
-      <p class="body-1">Page not found!</p>
-
-      <a href="#" class="btn-primary">
-        <span class="span">Go Home</span>
-      </a>
-
-
     </section>
+    <footer class="footer">
     <!-- <footer class="footer"> -->
       <p class="footer body-3" style="color: #eae6f2; font-weight: 700;">
         Copyright 2023. All Rights Reserved  Powered By HELLO WEATHER<span style="margin: -1em;"><img  class="m-icon" src="./assets/images/icons8-world-48.png" alt=""></span>
       </p>
-     
+    </footer>
     <!-- </footer> -->
-    <script>
-      const body = document.querySelector("body"),
-            nav = document.querySelector("nav"),
-            modeToggle = document.querySelector(".dark-light"),
-            searchToggle = document.querySelector(".searchToggle"),
-            sidebarOpen = document.querySelector(".sidebarOpen"),
-            siderbarClose = document.querySelector(".siderbarClose");
-            let getMode = localStorage.getItem("mode");
-                if(getMode && getMode === "dark-mode"){
-                  body.classList.add("dark");
-                }
-      // js code to toggle dark and light mode
-            modeToggle.addEventListener("click" , () =>{
-              modeToggle.classList.toggle("active");
-              body.classList.toggle("dark");
-              // js code to keep user selected mode even page refresh or file reopen
-              if(!body.classList.contains("dark")){
-                  localStorage.setItem("mode" , "light-mode");
-              }else{
-                  localStorage.setItem("mode" , "dark-mode");
-              }
-            });
-      // js code to toggle search box
-              searchToggle.addEventListener("click" , () =>{
-              searchToggle.classList.toggle("active");
-            });
-       
-            
-      //   js code to toggle sidebar
-      sidebarOpen.addEventListener("click" , () =>{
-          nav.classList.add("active");
-      });
-      body.addEventListener("click" , e =>{
-          let clickedElm = e.target;
-          if(!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")){
-              nav.classList.remove("active");
-          }
-      });
-      </script>
+    
       <script src="./assets/js/app.js" type="module"></script>
       <script src="./assets/js/route.js" type="module"></script>
       

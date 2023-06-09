@@ -1,37 +1,41 @@
-//update weather history
 
-var historydata = document.getElementById("btn");
-
-historydata.addEventListener("click", function() {
-    var historyName = document.getElementById("textField").value; 
-    GetHistoryInfo(historyName);
-});
-
-function GetHistoryInfo(historyName) {
-    var apiKey = 'ff14f746f028478188583111231405'; 
-    var epoch = Math.floor(Date.now() / 1000); 
-
-    fetch('https://api.weatherapi.com/v1/history.json?key=' + apiKey + '&q=' + historyName + '&unixdt=' + (epoch - 604800) + '&unixend_dt=' + (epoch - 86400))
-        .then(response => response.json())
-        .then(data => {
-            for (var i = 0; i < 7; i++) {
-                $("#historyTemp" + (i + 1)).text((data.forecast.forecastday[i].day.avgtemp_c).toFixed(0) + "°C");
+ //----------------add dark-light mode--------------- -->
+  
+      const body = document.querySelector("body"),
+            nav = document.querySelector("nav"),
+            modeToggle = document.querySelector(".dark-light"),
+            searchToggle = document.querySelector(".searchToggle"),
+            sidebarOpen = document.querySelector(".sidebarOpen"),
+            siderbarClose = document.querySelector(".siderbarClose");
+            let getMode = localStorage.getItem("mode");
+                if(getMode && getMode === "dark-mode"){
+                  body.classList.add("dark");
+                }
+      // js code to toggle dark and light mode
+            modeToggle.addEventListener("click" , () =>{
+              modeToggle.classList.toggle("active");
+              body.classList.toggle("dark");
+              // js code to keep user selected mode even page refresh or file reopen
+              if(!body.classList.contains("dark")){
+                  localStorage.setItem("mode" , "light-mode");
+              }else{
+                  localStorage.setItem("mode" , "dark-mode");
+              }
+            });
+      // js code to toggle search box
+              searchToggle.addEventListener("click" , () =>{
+              searchToggle.classList.toggle("active");
+            });
+       
             
-                $("#historyDate"+(i+1)).text(data.forecast.forecastday[i].date);
-                $("#historyWind"+(i+1)).text((data.forecast.forecastday[i].day.maxwind_kph).toFixed(0)+"km/h");
-                $("#historyImg" + (i + 1)).attr("src", "https:" + data.forecast.forecastday[i].day.condition.icon);
-
-                
-            }
-        })
-        .catch(error => {
-            
-            // console.error('Error:', error);
-        });
-}
-
-
-
-  
-  
-  
+      //   js code to toggle sidebar
+      sidebarOpen.addEventListener("click" , () =>{
+          nav.classList.add("active");
+      });
+      body.addEventListener("click" , e =>{
+          let clickedElm = e.target;
+          if(!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")){
+              nav.classList.remove("active");
+          }
+      });
+    

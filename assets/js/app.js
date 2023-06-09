@@ -86,12 +86,12 @@ btn.click(function () {
 var myIcon = document.getElementById("btn");
 
 myIcon.addEventListener("click", function () {
-  var newName = document.getElementById("textField");
+  var newName = document.getElementById("textField").value;
   GetInfo(newName);
 });
 
 function GetInfo(newName) {
-  fetch("https://api.openweathermap.org/data/2.5/forecast?q=" +newName.value +"&appid=997de838f7807adb42f8d2ed9d53369f")
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${newName}&appid=997de838f7807adb42f8d2ed9d53369f`,)
     .then((response) => response.json())
     .then((data) => {
       //Getting Temp
@@ -148,3 +148,68 @@ for (var i = 0; i < 5; i++) {
 }
 
   
+//update weather history
+
+var historydata = document.getElementById("btn");
+
+historydata.addEventListener("click", function() {
+    var historyName = document.getElementById("textField").value; 
+    GetHistoryInfo(historyName);
+});
+
+function GetHistoryInfo(historyName) {
+    var apiKey = 'ff14f746f028478188583111231405'; 
+    var epoch = Math.floor(Date.now() / 1000); 
+
+    fetch('https://api.weatherapi.com/v1/history.json?key=' + apiKey + '&q=' + historyName + '&unixdt=' + (epoch - 604800) + '&unixend_dt=' + (epoch - 86400))
+        .then(response => response.json())
+        .then(data => {
+            for (var i = 0; i < 7; i++) {
+                $("#historyTemp" + (i + 1)).text((data.forecast.forecastday[i].day.avgtemp_c).toFixed(0) + "°C");
+            
+                $("#historyDate"+(i+1)).text(data.forecast.forecastday[i].date);
+                $("#historyWind"+(i+1)).text((data.forecast.forecastday[i].day.maxwind_kph).toFixed(0)+"km/h");
+                $("#historyImg" + (i + 1)).attr("src", "https:" + data.forecast.forecastday[i].day.condition.icon);
+
+                
+            }
+        })
+        .catch(error => {
+            
+            // console.error('Error:', error);
+        });
+}
+
+const successCallback = (position) => {
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+
+  // Make a request to a reverse geocoding service
+  const apiUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=997de838f7807adb42f8d2ed9d53369f`;
+
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      const city = data[0].name;
+      console.log("City:", city);
+
+      // Store the city name in a variable or use it as needed
+      const currentCity = city;
+      console.log("Current City:", currentCity);
+      GetInfo(currentCity);
+      GetWeather(currentCity);
+      GetHistoryInfo(currentCity);
+    })
+    .catch((error) => {
+      console.log("Error:", error);
+    });
+};
+
+const errorCallback = (error) => {
+  console.error("Error:", error.message);
+};
+
+navigator.geolocation.getCurrentPosition(successCallback, errorCallback, {
+  enableHighAccuracy: true,
+  timeout: 5000
+});
